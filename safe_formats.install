@@ -1,0 +1,30 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_requirements().
+ */
+function safe_formats_requirements($phase) {
+  if ($phase == 'runtime') {
+
+    $default_format = variable_get('filter_default_format', NULL);
+    $requirements = array();
+    
+    if ($default_format == 2) {
+      $requirements['safe_formats'] = array(
+        'title' => 'Safe Formats',
+        'value' => t('%format is the default format.', array('%format' => $default_format)),
+        'description' => 'Full HTML is enabled for all users!',
+        'severity' => REQUIREMENT_ERROR,
+      );
+    } else {
+      $requirements['safe_formats'] = array(
+        'title' => 'Safe Formats',
+        'value' => t('%format is the default format.', array('%format' => $default_format)),
+        'severity' => REQUIREMENT_OK,
+      );
+    }
+  
+    return $requirements;
+  }
+}

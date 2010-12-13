@@ -1,0 +1,4 @@
+; $Id$
+name = Safe Input Formats
+description = "Safe Input Formats Example module"
+core = 6.x

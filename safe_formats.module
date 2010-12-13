@@ -1,0 +1,23 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * This is the file description for Safe Formats module.
+*/
+
+/**
+ * Implements hook_form_alter().
+ */
+function safe_formats_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'filter_admin_overview':
+      if ($form_state['post']['default'] == 2) {
+        drupal_set_message(t('Full HTML is the default input format. This will compromise the security of your site.'), 'error', TRUE);
+      }
+      break;
+  }
+}
+
+
+ 
